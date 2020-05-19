@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Apttus Ecommerce Summer &#x27;20</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Apttus Ecommerce Summer &#x27;20</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+<h1 id="steps-to-upgrade-summer-2019-e-com-template-to-use-spring-20-sdk">Steps to upgrade Summer-2019 e-com template to use Spring-20 SDK</h1>
+<h2 id="table-of-contents">Table Of Contents</h2>
+<ol>
+<li><p><strong><a href="#angular-8-upgrade">Angular 8 Upgrade</a></strong></p>
+<ul>
+<li>1.1. <a href="#angular-compiler-cli">Installing right version of @angular/compiler-cli</a></li>
+<li>1.2. <a href="#viewchild"><code>ViewChild</code>, <code>ViewChildren</code>, <code>ContentChild</code> and <code>ContentChildren</code> fixes</a></li>
+<li>1.3. <a href="#typescript">TypeScript 3.5.3</a></li>
+</ul>
+</li>
+<li><p><strong><a href="#install-additional">Install additional libraries</a></strong></p>
+<ul>
+<li>2.1. <a href="#install-option-highlight">Install @ng-select/ng-option-highlight</a></li>
+<li>2.2. <a href="#install-fortawesome">Install @fortawesome/fontawesome-free</a></li>
+</ul>
+</li>
+<li><p><strong><a href="#appmodule">App Module Changes</a></strong></p>
+</li>
+<li><p><strong><a href="#indexfile">index.html Changes</a></strong></p>
+</li>
+<li><p><strong><a href="#routing">Routing Refactoring &amp; Fixes</a></strong></p>
+</li>
+<li><p><strong><a href="#loading-component">New Loading Component</a></strong></p>
+</li>
+<li><p><strong><a href="#cart-model">Cart Model Changes</a></strong></p>
+</li>
+<li><p><strong><a href="#primary-contact">Primary Contact Output Fix</a></strong></p>
+</li>
+<li><p><strong><a href="#translation-files">Copy the translation files</a></strong></p>
+</li>
+<li><p><strong><a href="#angular-json">angular.json update</a></strong></p>
+</li>
+</ol>
+<div id="angular-8-upgrade"/>
+
+<h2 id="1-angular-8-upgrade">1. Angular 8 Upgrade</h2>
+<p>Summer 2019 SDK and Template are built in Angular 7 while Spring 20 SDK is built in Angular 8. 
+We&#39;ve to upgrade the angular libraries in template to use Spring 20. Please refer this <a href="https://update.angular.io/#7.2:8.2">document</a> for upgrade.</p>
+<p>Run the below command in terminal/command prompt from the root of the project folder to upgrade to Angular 8.</p>
+<div><pre class="line-numbers"><code class="language-shell">ng update &#64;angular/cli&#64;8 &#64;angular/core&#64;8 --force</code></pre></div><div id="angular-compiler-cli"/>
+
+<h3 id="11-installing-right-version-of-angularcompiler-cli">1.1. Installing right version of @angular/compiler-cli</h3>
+<p>Running the above command sometimes upgrade the &quot;@angular/compiler-cli&quot; to version 9. Please make sure version &quot;^8.2.3&quot; is installed.</p>
+<div id="viewchild"/>
+
+<h3 id="12-viewchild-viewchildren-contentchild-and-contentchildren-fixes">1.2. <code>ViewChild</code>, <code>ViewChildren</code>, <code>ContentChild</code> and <code>ContentChildren</code> fixes</h3>
+<p>From Angular 8, you must pass an additional argument <code>{ static: false }</code> when you use <code>ViewChild</code>, <code>ViewChildren</code>, <code>ContentChild</code> and <code>ContentChildren</code>. 
+Search for all the places they are used and update to pass the extra argument.</p>
+<p>Example in header.component.ts.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;ViewChild(&#39;searchModal&#39;, { static: false }) searchModal: ElementRef;
+&#64;ViewChild(&#39;profile&#39;, { static: false }) profile: MiniProfileComponent;
+&#64;ViewChild(&#39;searchBox&#39;, { static: false }) searchBox: ElementRef;</code></pre></div><p>Only in the <code>DetailsLayoutComponent</code> make sure the <code>static</code> property is passed as <code>true</code>.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;ViewChild(&#39;primaryActions&#39;, { static: true }) primaryActions: any;
+&#64;ViewChild(&#39;secondaryActions&#39;, { static: true }) secondaryActions: any;
+&#64;ViewChild(&#39;headerNav&#39;, { static: true }) headerNav: ElementRef&lt;any&gt;;</code></pre></div><div id="typescript"/>
+
+<h3 id="13-typescript-353">1.3. TypeScript 3.5.3</h3>
+<p>There are chances you may get Typescript version mismatch error. To fix it make sure the version of &quot;typescript&quot; is &quot;3.5.3&quot; in package.json 
+with out any leading character (&quot;^&quot; or &quot;~&quot;).</p>
+<div id="install-additional"/>
+
+<h2 id="2-install-additional-libraries">2. Install additional libraries</h2>
+<div id="install-option-highlight"/>
+
+<h2 id="21-install-ng-selectng-option-highlight">2.1. Install @ng-select/ng-option-highlight</h2>
+<p>Install &quot;@ng-select/ng-option-highlight&quot; library as production dependency. This library is used to highlight the searched text in the 
+options.</p>
+<div><pre class="line-numbers"><code class="language-shell">npm install &#64;ng-select/ng-option-highlight --save</code></pre></div><div id="install-fortawesome"/>
+
+<h2 id="22-install-fortawesomefontawesome-free">2.2. Install @fortawesome/fontawesome-free</h2>
+<p>Spring 20 SDK uses new version (5) of the font-awesome library which is available as a separate npm package. Uninstall the previous 
+font awesome library and install the below one.</p>
+<p>Install &quot;@fortawesome/fontawesome-free&quot; as production dependency.</p>
+<div><pre class="line-numbers"><code class="language-shell">npm install &#64;fortawesome/fontawesome-free --save</code></pre></div><p>Update the <code>styles.scss</code> file to import the fortawesome SCSS files.</p>
+<div><pre class="line-numbers"><code class="language-scss">$fa-font-path: &quot;~&#64;fortawesome/fontawesome-free/webfonts&quot;;
+&#64;import &quot;~&#64;fortawesome/fontawesome-free/scss/fontawesome&quot;;
+&#64;import &quot;~&#64;fortawesome/fontawesome-free/scss/solid&quot;;
+&#64;import &quot;~&#64;fortawesome/fontawesome-free/scss/v4-shims&quot;;</code></pre></div><p>You also need to update the html files to replace the old font icons to the new icons.</p>
+<p>Example,</p>
+<div><pre class="line-numbers"><code class="language-none">&lt;span class=&quot;oi oi-magnifying-glass p-0&quot;&gt;&lt;/span&gt;</code></pre></div><p>The above code uses the old font awesome icon and you should replace that as below,</p>
+<div><pre class="line-numbers"><code class="language-none">&lt;i class=&quot;fa fa-search fa-lg&quot;&gt;&lt;/i&gt;</code></pre></div><div id="appmodule"/>
+
+<h2 id="3-app-module-changes">3. App Module Changes</h2>
+<p>You don&#39;t have to invoke the <code>forRoot</code> method of <code>ApttusModule</code> and all you need is to invoke the <code>forRoot</code> of <code>CommerceModule</code> 
+passing the environment object.</p>
+<div><pre class="line-numbers"><code class="language-ts">&#64;NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    CommerceModule.forRoot(environment),
+    ProductDrawerModule,
+    ModalModule.forRoot(),
+    ApttusModalModule,
+    TranslateModule.forRoot({
+      loader: { provide: TranslateLoader, useClass: TranslatorLoaderService }
+    }),
+    ComponentModule,
+    ServiceWorkerModule.register(&#39;ngsw-worker.js&#39;, { enabled: environment.production })
+  ],
+  providers: [RouteGuard, AuthGuard, AboGuard, ConfigureGuard, ConstraintRuleGuard, OrderDetailsGuard],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre></div><div id="indexfile"/>
+
+<h2 id="4-indexhtml-changes">4. index.html Changes</h2>
+<p>Please add the <code>base</code> tag in the &quot;index.html&quot; file.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;base href=&quot;/&quot; /&gt;</code></pre></div><div id="routing"/>
+
+<h2 id="5-routing-refactoring--fixes">5. Routing Refactoring &amp; Fixes</h2>
+<p>Spring 20 SDK uses a refactored routing with REST friendly URLs. The routing follows the same structure based on objects. 
+The name of the route will be the plural label of the object in salesforce and all routes will be lowercase.</p>
+<div><pre class="line-numbers"><code class="language-none">Modules
+  Products
+    List (/products)
+    Detail (/products/:id)
+    Create (/products/create)
+
+  Orders
+    List (/orders)
+    Detail (/orders/:id)
+    Create (/orders/create)
+
+  Assets
+    List (/assets)
+    Detail (/assets/:id)
+    Create (/assets/create)</code></pre></div><p>You need to update the existing routes in &quot;app-routing.module.ts&quot; file as below,</p>
+<div><pre class="line-numbers"><code class="language-ts">const routes: Routes = [
+  {
+    path: &#39;&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/home/home.module&#39;).then(m =&gt; m.HomeModule),
+    data: { title: &#39;B2B E-commerce&#39; }
+  },
+  {
+    path: &#39;change-password&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/change-password/change-password.module&#39;).then(m =&gt; m.ChangePasswordModule),
+    data: { title: &#39;Change Password&#39; }
+  },
+  {
+    path: &#39;products&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/product-list/product-list.module&#39;).then(m =&gt; m.ProductListModule),
+    data: { title: &#39;Product&#39; }
+  },
+  {
+    path: &#39;products/:id&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/product-details/product-details.module&#39;).then(m =&gt; m.ProductDetailsModule),
+    data: { title: &#39;Product&#39; }
+  },
+  {
+    path: &#39;assets&#39;,
+    canActivate: [RouteGuard, AuthGuard, AboGuard],
+    loadChildren: () =&gt; import(&#39;./modules/installed-products/installed-products.module&#39;).then(m =&gt; m.InstalledProductsModule),
+    data: { title: &#39;Installed Products&#39; }
+  },
+  {
+    path: &#39;search/:query&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/product-list/product-list.module&#39;).then(m =&gt; m.ProductListModule),
+    data: { title: &#39;Search&#39; }
+  },
+  {
+    path: &#39;checkout&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/cart/cart.module&#39;).then(m =&gt; m.CartModule),
+    canActivate: [RouteGuard, ConstraintRuleGuard],
+    data: { title: &#39;Checkout&#39; }
+  },
+  {
+    path: &#39;my-account&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/my-account/my-account.module&#39;).then(m =&gt; m.MyAccountModule),
+    data: { title: &#39;My Account&#39; },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: &#39;carts&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/manage-cart/manage-cart.module&#39;).then(m =&gt; m.ManageCartModule),
+    data: { title: &#39;Cart&#39; }
+  },
+  {
+    path: &#39;login&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/login/login.module&#39;).then(m =&gt; m.LoginModule),
+    data: { title: &#39;Login&#39;}
+  },
+  {
+    path: &#39;orders&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/order/order.module&#39;).then(m =&gt; m.OrderModule),
+    data: { title: &#39;Orders&#39; },
+    canActivate: [OrderDetailsGuard]
+  },
+  {
+    path: &#39;proposals&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/quote/quote.module&#39;).then(m =&gt; m.QuoteModule),
+    data: { title: &#39;Proposals&#39;},
+    canActivate: [AuthGuard]
+  },
+  {
+    path: &#39;payment-message&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/payment/payment-message.module&#39;).then(m =&gt; m.PaymentMessageModule),
+    data: { title: &#39;Payment Message&#39;}
+  },
+  {
+    path: &#39;Assets&#39;,
+    loadChildren: () =&gt; import(&#39;./modules/installed-products/installed-products.module&#39;).then(m =&gt; m.InstalledProductsModule),
+    data: {title: &#39;Assets&#39;}
+  },
+  {
+    path: &#39;**&#39;,
+    redirectTo: &#39;&#39;
+  }
+];</code></pre></div><p>You also need to update the existing code both in HTML and TS code to replace the older routes with new ones. For example, 
+wherever &#39;/asset-list&#39; is used you need to replace that with &#39;/assets&#39;. </p>
+<div id="loading-component"/>
+
+<h2 id="6-new-loading-component">6. New Loading Component</h2>
+<p>For showing progress during AJAX calls a new component is introduced called <code>&lt;apt-dots&gt;</code>. Replace the <code>apt-md-spinner</code> component with the new one.</p>
+<div id="cart-model"/>
+
+<h2 id="7-cart-model-changes">7. Cart Model Changes</h2>
+<p>The <code>Quote</code> property in the <code>Cart</code> model is changed to <code>Proposald</code>. Please update the files under &quot;quote&quot; folder like &quot;request-quote-form.component.ts&quot;, 
+&quot;create-quote.component.ts&quot; etc.</p>
+<div id="primary-contact"/>
+
+<h2 id="8-primary-contact-output-fix">8. Primary Contact Output Fix</h2>
+<p>The <code>PrimaryContactId</code> has been changed to <code>_PrimaryContactId</code> in the <code>Quote</code> model due to schema. To make the ouput field component 
+in quote details page to display the primary contact correctly you need to change field value to &quot;_PrimaryContactId&quot; as shown below.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;apt-output-field [record]=&quot;quote&quot; field=&quot;_PrimaryContactId&quot; layout=&quot;inline&quot;
+            [editable]=&quot;quote?.Approval_Stage === &#39;Draft&#39; || quote?.Approval_Stage === &#39;Presented&#39;&quot; 
+            [showQuickView]=&quot;true&quot; [lookupOptions]=&quot;lookupOptions&quot;&gt;&lt;/apt-output-field&gt;</code></pre></div><div id="translation-files"/>
+
+<h2 id="9-copy-the-translation-files">9. Copy the translation files</h2>
+<p>Please copy the latest translation files from the &quot;assets/i18n&quot; folder.</p>
+<div id="angular-json"/>
+
+<h2 id="10-angularjson-update">10. angular.json update</h2>
+<p>Please make sure your &quot;angular.json&quot; file has all the latest changes due to new library installations and upgrade.</p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'upgrade-ecommerce-templat-from-summer-v1902-to-spring-v2001.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
