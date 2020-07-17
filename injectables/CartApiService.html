@@ -145,7 +145,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(apiService: ApiService, userService: <a href="../injectables/UserService.html">UserService</a>, cacheService: CacheService, configService: ConfigurationService)</code>
+<code>constructor(apiService: ApiService, userService: <a href="../injectables/UserService.html">UserService</a>, cacheService: CacheService, configService: ConfigurationService, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
                     </td>
                 </tr>
 
@@ -203,6 +203,18 @@
                                                   
                                                         <td>
                                                                     <code>ConfigurationService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ngZone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -614,7 +626,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>refresh()</code>
+<code>refresh(price: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
@@ -625,8 +637,43 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>price</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -1232,6 +1279,7 @@
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'CartApiService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

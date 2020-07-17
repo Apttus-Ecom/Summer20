@@ -400,7 +400,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAssetLineItemPrice(assetLineItem: <a href="../interfaces/LineItem.html">AssetLineItem</a>)</code>
+<code>getAssetLineItemPrice(assetLineItem: <a href="../classes/AssetLineItem.html">AssetLineItem</a>)</code>
                 </td>
             </tr>
 
@@ -425,7 +425,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>assetLineItem</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >AssetLineItem</a></code>
+                                                <code><a href="../classes/AssetLineItem.html" target="_self" >AssetLineItem</a></code>
                                     </td>
 
                                     <td>
@@ -646,7 +646,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getLineItemPrice(itemList: <a href="../interfaces/LineItem.html">Array<CartItem | AssetLineItem | OrderLineItem | QuoteLineItem> | CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</a>, options?: <a href="../interfaces/LineItem.html">Array<AssetLineItem | QuoteLineItem | OrderLineItem></a>)</code>
+<code>getLineItemPrice(itemList: Array<CartItem | AssetLineItem | OrderLineItem | QuoteLineItem> | CartItem | AssetLineItem | QuoteLineItem | OrderLineItem, options?: Array<AssetLineItem | QuoteLineItem | OrderLineItem>)</code>
                 </td>
             </tr>
 
@@ -672,7 +672,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>itemList</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >Array&lt;CartItem | AssetLineItem | OrderLineItem | QuoteLineItem&gt; | CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</a></code>
+                                            <code>Array&lt;CartItem | AssetLineItem | OrderLineItem | QuoteLineItem&gt; | CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</code>
                                     </td>
 
                                     <td>
@@ -684,7 +684,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>options</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >Array&lt;AssetLineItem | QuoteLineItem | OrderLineItem&gt;</a></code>
+                                            <code>Array&lt;AssetLineItem | QuoteLineItem | OrderLineItem&gt;</code>
                                     </td>
 
                                     <td>
@@ -819,7 +819,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOrderLineItemPrice(orderLI: <a href="../interfaces/LineItem.html">OrderLineItem</a>)</code>
+<code>getOrderLineItemPrice(orderLI: <a href="../classes/OrderLineItem.html">OrderLineItem</a>)</code>
                 </td>
             </tr>
 
@@ -845,7 +845,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>orderLI</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >OrderLineItem</a></code>
+                                                <code><a href="../classes/OrderLineItem.html" target="_self" >OrderLineItem</a></code>
                                     </td>
 
                                     <td>
@@ -1118,7 +1118,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getQuoteLineItemPrice(quoteLI: <a href="../interfaces/LineItem.html">QuoteLineItem</a>)</code>
+<code>getQuoteLineItemPrice(quoteLI: <a href="../classes/QuoteLineItem.html">QuoteLineItem</a>)</code>
                 </td>
             </tr>
 
@@ -1144,7 +1144,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>quoteLI</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >QuoteLineItem</a></code>
+                                                <code><a href="../classes/QuoteLineItem.html" target="_self" >QuoteLineItem</a></code>
                                     </td>
 
                                     <td>
@@ -1257,7 +1257,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getRollupItemPrice(item: <a href="../interfaces/LineItem.html">CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</a>)</code>
+<code>getRollupItemPrice(item: CartItem | AssetLineItem | QuoteLineItem | OrderLineItem)</code>
                 </td>
             </tr>
 
@@ -1281,7 +1281,7 @@ There are also pipes provided that wrap this service to provide pricing within a
                                 <tr>
                                     <td>item</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</a></code>
+                                            <code>CartItem | AssetLineItem | QuoteLineItem | OrderLineItem</code>
                                     </td>
 
                                     <td>
@@ -1479,6 +1479,7 @@ There are also pipes provided that wrap this service to provide pricing within a
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'PriceService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

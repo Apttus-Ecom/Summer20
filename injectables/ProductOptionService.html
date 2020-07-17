@@ -134,9 +134,6 @@
                             <li>
                                 <a href="#groupOptionGroups">groupOptionGroups</a>
                             </li>
-                            <li>
-                                <a href="#isProductOptionSelected">isProductOptionSelected</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -280,7 +277,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                        <b>Returns : </b>    <code>Array&lt;ProductOptionComponent&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -366,7 +363,7 @@ with the group parameter.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                        <b>Returns : </b>    <code>Array&lt;ProductOptionComponent&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -391,7 +388,7 @@ with the group parameter.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getProductOptionTree(productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relatedTo?: <a href="../interfaces/LineItem.html">CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</a>, applyFilter: "none" | "items" | "changes", changes?: Array<CartItem>)</code>
+<code>getProductOptionTree(productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relatedTo?: CartItem | QuoteLineItem | AssetLineItem | OrderLineItem, applyFilter: "none" | "items" | "changes", changes?: Array<CartItem>)</code>
                 </td>
             </tr>
 
@@ -433,7 +430,7 @@ with the group parameter.</p>
                                 <tr>
                                     <td>relatedTo</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</a></code>
+                                            <code>CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</code>
                                     </td>
 
                                     <td>
@@ -516,7 +513,7 @@ that are empty and associate related cart items with each option</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getRequiredOptions(productOptionComponents: <a href="../components/ProductOptionComponent.html">Array<ProductOptionComponent></a>, cartItems: Array<CartItem>)</code>
+<code>getRequiredOptions(productOptionComponents: Array<ProductOptionComponent>, cartItems: Array<CartItem>)</code>
                 </td>
             </tr>
 
@@ -544,7 +541,7 @@ a bundle configuration to the cart.</p>
                                 <tr>
                                     <td>productOptionComponents</td>
                                     <td>
-                                                <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                                            <code>Array&lt;ProductOptionComponent&gt;</code>
                                     </td>
 
                                     <td>
@@ -579,7 +576,7 @@ a bundle configuration to the cart.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                        <b>Returns : </b>    <code>Array&lt;ProductOptionComponent&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -604,7 +601,7 @@ a bundle configuration to the cart.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getRequiredUncheckedOptions(allOptions: <a href="../components/ProductOptionComponent.html">Array<ProductOptionComponent></a>)</code>
+<code>getRequiredUncheckedOptions(allOptions: Array<ProductOptionComponent>)</code>
                 </td>
             </tr>
 
@@ -631,7 +628,7 @@ a bundle configuration to the cart.</p>
                                 <tr>
                                     <td>allOptions</td>
                                     <td>
-                                                <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                                            <code>Array&lt;ProductOptionComponent&gt;</code>
                                     </td>
 
                                     <td>
@@ -650,7 +647,7 @@ a bundle configuration to the cart.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../components/ProductOptionComponent.html" target="_self" >Array&lt;ProductOptionComponent&gt;</a></code>
+                        <b>Returns : </b>    <code>Array&lt;ProductOptionComponent&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -675,7 +672,7 @@ a bundle configuration to the cart.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>groupOptionGroups(p: <a href="../classes/BundleProduct.html">BundleProduct</a>, attributeValue: <a href="../classes/ProductAttributeValue.html">ProductAttributeValue</a>, relatedItems: <a href="../interfaces/LineItem.html">Array<CartItem | QuoteLineItem | AssetLineItem | OrderLineItem></a>, applyFilter: "none" | "items" | "changes", metadata: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, parentItem?: <a href="../interfaces/LineItem.html">CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</a>)</code>
+<code>groupOptionGroups(p: <a href="../classes/BundleProduct.html">BundleProduct</a>, attributeValue: <a href="../classes/ProductAttributeValue.html">ProductAttributeValue</a>, relatedItems: Array<CartItem | QuoteLineItem | AssetLineItem | OrderLineItem>, applyFilter: "none" | "items" | "changes", metadata: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, parentItem?: CartItem | QuoteLineItem | AssetLineItem | OrderLineItem)</code>
                 </td>
             </tr>
 
@@ -728,7 +725,7 @@ a bundle configuration to the cart.</p>
                                 <tr>
                                     <td>relatedItems</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >Array&lt;CartItem | QuoteLineItem | AssetLineItem | OrderLineItem&gt;</a></code>
+                                            <code>Array&lt;CartItem | QuoteLineItem | AssetLineItem | OrderLineItem&gt;</code>
                                     </td>
 
                                     <td>
@@ -771,7 +768,7 @@ a bundle configuration to the cart.</p>
                                 <tr>
                                     <td>parentItem</td>
                                     <td>
-                                                <code><a href="../interfaces/LineItem.html" target="_self" >CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</a></code>
+                                            <code>CartItem | QuoteLineItem | AssetLineItem | OrderLineItem</code>
                                     </td>
 
                                     <td>
@@ -789,82 +786,6 @@ a bundle configuration to the cart.</p>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/BundleProduct.html" target="_self" >BundleProduct</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isProductOptionSelected"></a>
-                    <span class="name">
-                        <b>
-                            isProductOptionSelected
-                        </b>
-                        <a href="#isProductOptionSelected"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>isProductOptionSelected(productOptionComponent: <a href="../classes/ProductOptionComponent.html">ProductOptionComponent</a>, cartItems: Array<CartItem>)</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>productOptionComponent</td>
-                                    <td>
-                                                <code><a href="../classes/ProductOptionComponent.html" target="_self" >ProductOptionComponent</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>cartItems</td>
-                                    <td>
-                                            <code>Array&lt;CartItem&gt;</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                     <div class="io-description">
@@ -1072,6 +993,7 @@ a bundle configuration to the cart.</p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'ProductOptionService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -118,9 +118,6 @@
                                 <a href="#getMyCart">getMyCart</a>
                             </li>
                             <li>
-                                <a href="#getProductAttributeForItem">getProductAttributeForItem</a>
-                            </li>
-                            <li>
                                 <a href="#isPricePending">isPricePending</a>
                             </li>
                             <li>
@@ -806,70 +803,6 @@ export class MyComponent implements OnInit{
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getProductAttributeForItem"></a>
-                    <span class="name">
-                        <b>
-                            getProductAttributeForItem
-                        </b>
-                        <a href="#getProductAttributeForItem"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getProductAttributeForItem(item: <a href="../classes/CartItem.html">CartItem</a>)</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../classes/CartItem.html" target="_self" >CartItem</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="isPricePending"></a>
                     <span class="name">
                         <b>
@@ -890,6 +823,8 @@ export class MyComponent implements OnInit{
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>The isPricepending method checks the cart is pricepending flag and return the boolean value.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -899,6 +834,7 @@ export class MyComponent implements OnInit{
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -913,6 +849,10 @@ export class MyComponent implements OnInit{
                                     </td>
 
 
+                                    <td>
+                                        <p>instance of cart</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -924,7 +864,8 @@ export class MyComponent implements OnInit{
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>boolean value of cart is Pricepending flag.</p>
+
                     </div>
                 </td>
             </tr>
@@ -1522,6 +1463,7 @@ export class MyComponent implements OnInit{
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'CartService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

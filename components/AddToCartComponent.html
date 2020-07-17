@@ -99,22 +99,7 @@ export class AppModule {}</code></pre></div>
     </p>
     <div class="io-description">
                 <div>
-                    <pre class="line-numbers"><code class="language-html">// Basic Usage
-&lt;apt-add-to-cart [product]=&quot;product&quot;&gt;&lt;/apt-add-to-cart&gt;
-
-// All input and output options.
-&lt;apt-add-to-cart
-  [product]=&quot;product&quot;
-  [showQuantityControls]=&quot;quantityControlsShowing&quot;
-  [disabled]=&quot;isDisabled&quot;
-  [quantity]=&quot;quantity&quot;
-  [configurationEnabled]=&quot;isConfigEnabled&quot;
-  [configurationRoute]=&quot;route/to/configure/page&quot;
-  [trigger]=&quot;willTrigger&quot;
-  [btnClass]=&quot;classOfButton&quot;
-  [size]=&quot;lg&quot;
-  (onAddToCart)=&quot;handleAddToCart($event)&quot;
-&gt;&lt;/apt-add-to-cart&gt;</code></pre>
+                    <pre class="line-numbers"><code class="language-html">// Basic Usage&lt;apt-add-to-cart [product]=&quot;product&quot;&gt;&lt;/apt-add-to-cart&gt;// All input and output options.&lt;apt-add-to-cart[product]=&quot;product&quot;[showQuantityControls]=&quot;quantityControlsShowing&quot;[disabled]=&quot;isDisabled&quot;[quantity]=&quot;quantity&quot;[configurationEnabled]=&quot;isConfigEnabled&quot;[configurationRoute]=&quot;route/to/configure/page&quot;[trigger]=&quot;willTrigger&quot;[btnClass]=&quot;classOfButton&quot;[size]=&quot;lg&quot;(onAddToCart)=&quot;handleAddToCart($event)&quot;&gt;&lt;/apt-add-to-cart&gt;</code></pre>
                 </div>
     </div>
 
@@ -174,9 +159,6 @@ export class AppModule {}</code></pre></div>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isCmsEnabled">isCmsEnabled</a>
-                            </li>
-                            <li>
                                 <a href="#isLoggedIn">isLoggedIn</a>
                             </li>
                             <li>
@@ -189,7 +171,7 @@ export class AppModule {}</code></pre></div>
                                 <a href="#view$">view$</a>
                             </li>
                             <li>
-                                <a href="#viewSubscription">viewSubscription</a>
+                                <a href="#viewSubscriptions">viewSubscriptions</a>
                             </li>
                         </ul>
                     </td>
@@ -265,7 +247,7 @@ export class AppModule {}</code></pre></div>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(cartService: <a href="../injectables/CartService.html">CartService</a>, storefrontService: <a href="../injectables/StorefrontService.html">StorefrontService</a>, assetModalService: AssetModalService, crService: <a href="../interfaces/ConstraintRule.html">ConstraintRuleService</a>, exceptionService: <a href="../injectables/ExceptionService.html">ExceptionService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, productOptionService: <a href="../injectables/ProductOptionService.html">ProductOptionService</a>, productConfigurationService: <a href="../injectables/ProductConfigurationService.html">ProductConfigurationService</a>, userService: <a href="../injectables/UserService.html">UserService</a>)</code>
+<code>constructor(cartService: <a href="../injectables/CartService.html">CartService</a>, storefrontService: <a href="../injectables/StorefrontService.html">StorefrontService</a>, assetModalService: AssetModalService, crService: <a href="../classes/ConstraintRule.html">ConstraintRuleService</a>, exceptionService: <a href="../injectables/ExceptionService.html">ExceptionService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, productOptionService: <a href="../injectables/ProductOptionService.html">ProductOptionService</a>, userService: <a href="../injectables/UserService.html">UserService</a>)</code>
                     </td>
                 </tr>
 
@@ -333,7 +315,7 @@ export class AppModule {}</code></pre></div>
                                                         <td>crService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../interfaces/ConstraintRule.html" target="_self" >ConstraintRuleService</a></code>
+                                                                        <code><a href="../classes/ConstraintRule.html" target="_self" >ConstraintRuleService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -378,20 +360,6 @@ export class AppModule {}</code></pre></div>
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ProductOptionService.html" target="_self" >ProductOptionService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
-                                                </tr>
-                                                <tr>
-                                                        <td>productConfigurationService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/ProductConfigurationService.html" target="_self" >ProductConfigurationService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -560,7 +528,7 @@ export class AppModule {}</code></pre></div>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                        <i>Type : </i>    <code>Product | BundleProduct</code>
 
                     </td>
                 </tr>
@@ -707,33 +675,6 @@ export class AppModule {}</code></pre></div>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="isCmsEnabled"></a>
-                        <span class="name">
-                            <b>
-                            isCmsEnabled</b>
-                            <a href="#isCmsEnabled"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="isLoggedIn"></a>
                         <span class="name">
                             <b>
@@ -819,7 +760,7 @@ export class AppModule {}</code></pre></div>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/View.html" target="_self" >BehaviorSubject&lt;View&gt;</a></code>
+                            <i>Type : </i>    <code>BehaviorSubject&lt;View&gt;</code>
 
                         </td>
                     </tr>
@@ -841,18 +782,23 @@ export class AppModule {}</code></pre></div>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="viewSubscription"></a>
+                        <a name="viewSubscriptions"></a>
                         <span class="name">
                             <b>
-                            viewSubscription</b>
-                            <a href="#viewSubscription"><span class="icon ion-ios-link"></span></a>
+                            viewSubscriptions</b>
+                            <a href="#viewSubscriptions"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Subscription</code>
+                            <i>Type : </i>    <code>Subscription[]</code>
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
                         </td>
                     </tr>
 
@@ -891,12 +837,12 @@ export class AppModule {}</code></pre></div>
   &lt;/form&gt;
 &lt;/ng-container&gt;
 
-&lt;apt-configuration-summary-wrapper
+&lt;apt-product-configuration-summary
   *ngIf&#x3D;&quot;renderConfiguration &amp;&amp; configurationEnabled &amp;&amp; (product?.HasOptions || product?.HasAttributes)&quot;
   [product]&#x3D;&quot;product.Id&quot;
   [quantity]&#x3D;&quot;quantity&quot;
   #productConfiguration
-&gt;&lt;/apt-configuration-summary-wrapper&gt;
+&gt;&lt;/apt-product-configuration-summary&gt;
 </code></pre>
     </div>
 
@@ -934,8 +880,8 @@ export class AppModule {}</code></pre></div>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container>  <form [ngClass]="inputClass">    <div class="align-items-center d-flex justify-content-center input-group-sm" *ngIf="showQuantityControls">      <label [for]="\'quantity\' + product.Id" class="mr-3">{{\'COMMON.QUANTITY\' | translate}}</label>      <input type="number" min="1" class="form-control mb-2 w-25" [(ngModel)]="quantity" min="1" name="quantity"      [id]="\'quantity\' + product.Id" />    </div>    <div class="d-flex" *ngIf="view$ | async as view">      <apt-cr-popover class="d-block flex-grow-1" [product]="product" [ruleList]="view.rules">        <button class="btn btn-block" [disabled]="view?.disabled || view.actions[0]?.enabled === false" [ladda]="loading" [attr.data-style]="\'zoom-in\'" [ngClass]="buttonClass" (click)="view.actions[0]?.onClick()" type="button">          {{view.actions[0]?.label | translate}}        </button>      </apt-cr-popover>      <button type="button" class="btn dropdown-toggle dropdown-toggle-split"  *ngIf="(isLoggedIn$ | async) === true && view.actions.length > 1" [ngClass]="buttonClass" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        <i class="fa fa-caret-down"></i>      </button>      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">        <ng-container *ngFor="let action of view.actions; let idx = index">          <a class="dropdown-item" href="javascript:void(0)" (click)="action.onClick()" *ngIf="idx > 0 && action?.enabled">{{action.label}}</a>        </ng-container>      </div>    </div>  </form></ng-container><apt-configuration-summary-wrapper  *ngIf="renderConfiguration && configurationEnabled && (product?.HasOptions || product?.HasAttributes)"  [product]="product.Id"  [quantity]="quantity"  #productConfiguration></apt-configuration-summary-wrapper></div>'
-    var COMPONENTS = [{'name': 'AccordionGroupComponent', 'selector': 'apt-cms-accordion-group'},{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AlertComponent', 'selector': 'apt-alert'},{'name': 'AssetDropdownButtonComponent', 'selector': 'apt-asset-dropdown-button'},{'name': 'AssetListComponent', 'selector': 'apt-asset-list'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CategoryFilterComponent', 'selector': 'apt-category-filter'},{'name': 'ChartComponent', 'selector': 'apt-chart'},{'name': 'CmsConfigurationSummaryComponent', 'selector': 'apt-cms-configuration-summary'},{'name': 'CmsProductConfigurationComponent', 'selector': 'apt-cms-product-configuration'},{'name': 'ConfigurationSummaryWrapperComponent', 'selector': 'apt-configuration-summary-wrapper'},{'name': 'ConstraintRuleAlertComponent', 'selector': 'apt-constraint-rule-alert'},{'name': 'ConstraintRulePopoverComponent', 'selector': 'apt-cms-constraint-rule-popover'},{'name': 'ConstraintRuleSidebarComponent', 'selector': 'apt-constraint-rule-sidebar'},{'name': 'CRConstraintAlertComponent', 'selector': 'apt-cr-constraint-alert'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'CRSideMenuComponent', 'selector': 'apt-cr-side-menu'},{'name': 'DataFilterComponent', 'selector': 'apt-data-filter'},{'name': 'DotsComponent', 'selector': 'apt-dots'},{'name': 'GenerateDocumentComponent', 'selector': 'apt-generate-document'},{'name': 'InputDateComponent', 'selector': 'apt-date-range-input'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputSelectComponent', 'selector': 'apt-input-select'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'LineItemTableRowComponent', 'selector': 'apt-line-item-table-row'},{'name': 'LoginFormComponent', 'selector': 'apt-login-form'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'OutputFieldComponent', 'selector': 'apt-output-field'},{'name': 'PaymentComponent', 'selector': 'apt-payment'},{'name': 'PaymentIFrameComponent', 'selector': 'apt-payment-iframe'},{'name': 'PresentDocumentComponent', 'selector': 'apt-present-document'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'PriceSummaryComponent', 'selector': 'apt-price-summary'},{'name': 'ProductAttributeComponent', 'selector': 'apt-cms-product-attribute'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductCompareComponent', 'selector': 'apt-product-compare'},{'name': 'ProductConfigurationComponent', 'selector': 'apt-product-configuration'},{'name': 'ProductConfigurationSummaryComponent', 'selector': 'apt-product-configuration-summary'},{'name': 'ProductDrawerComponent', 'selector': 'apt-product-drawer'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'},{'name': 'ProductOptionComponent', 'selector': 'apt-cms-product-option'},{'name': 'ProductSearchComponent', 'selector': 'apt-product-search'},{'name': 'ProductTypeFilterComponent', 'selector': 'apt-product-type-filter'},{'name': 'PromotionComponent', 'selector': 'apt-promotion'},{'name': 'SpinnerComponent', 'selector': 'apt-spinner'},{'name': 'TableComponent', 'selector': 'apt-table'},{'name': 'TaxPopHoverComponent', 'selector': 'apt-tax-pophover'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container>  <form [ngClass]="inputClass">    <div class="align-items-center d-flex justify-content-center input-group-sm" *ngIf="showQuantityControls">      <label [for]="\'quantity\' + product.Id" class="mr-3">{{\'COMMON.QUANTITY\' | translate}}</label>      <input type="number" min="1" class="form-control mb-2 w-25" [(ngModel)]="quantity" min="1" name="quantity"      [id]="\'quantity\' + product.Id" />    </div>    <div class="d-flex" *ngIf="view$ | async as view">      <apt-cr-popover class="d-block flex-grow-1" [product]="product" [ruleList]="view.rules">        <button class="btn btn-block" [disabled]="view?.disabled || view.actions[0]?.enabled === false" [ladda]="loading" [attr.data-style]="\'zoom-in\'" [ngClass]="buttonClass" (click)="view.actions[0]?.onClick()" type="button">          {{view.actions[0]?.label | translate}}        </button>      </apt-cr-popover>      <button type="button" class="btn dropdown-toggle dropdown-toggle-split"  *ngIf="(isLoggedIn$ | async) === true && view.actions.length > 1" [ngClass]="buttonClass" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">        <i class="fa fa-caret-down"></i>      </button>      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">        <ng-container *ngFor="let action of view.actions; let idx = index">          <a class="dropdown-item" href="javascript:void(0)" (click)="action.onClick()" *ngIf="idx > 0 && action?.enabled">{{action.label}}</a>        </ng-container>      </div>    </div>  </form></ng-container><apt-product-configuration-summary  *ngIf="renderConfiguration && configurationEnabled && (product?.HasOptions || product?.HasAttributes)"  [product]="product.Id"  [quantity]="quantity"  #productConfiguration></apt-product-configuration-summary></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AlertComponent', 'selector': 'apt-alert'},{'name': 'AssetDropdownButtonComponent', 'selector': 'apt-asset-dropdown-button'},{'name': 'AssetListComponent', 'selector': 'apt-asset-list'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CategoryFilterComponent', 'selector': 'apt-category-filter'},{'name': 'ChartComponent', 'selector': 'apt-chart'},{'name': 'ConstraintRuleAlertComponent', 'selector': 'apt-constraint-rule-alert'},{'name': 'ConstraintRuleSidebarComponent', 'selector': 'apt-constraint-rule-sidebar'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'DataFilterComponent', 'selector': 'apt-data-filter'},{'name': 'DotsComponent', 'selector': 'apt-dots'},{'name': 'GenerateDocumentComponent', 'selector': 'apt-generate-document'},{'name': 'InputDateComponent', 'selector': 'apt-date-range-input'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputSelectComponent', 'selector': 'apt-input-select'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'LineItemTableRowComponent', 'selector': 'apt-line-item-table-row'},{'name': 'LoginFormComponent', 'selector': 'apt-login-form'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'OutputFieldComponent', 'selector': 'apt-output-field'},{'name': 'PaymentComponent', 'selector': 'apt-payment'},{'name': 'PaymentIFrameComponent', 'selector': 'apt-payment-iframe'},{'name': 'PresentDocumentComponent', 'selector': 'apt-present-document'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'PriceSummaryComponent', 'selector': 'apt-price-summary'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductCompareComponent', 'selector': 'apt-product-compare'},{'name': 'ProductConfigurationComponent', 'selector': 'apt-product-configuration'},{'name': 'ProductConfigurationSummaryComponent', 'selector': 'apt-product-configuration-summary'},{'name': 'ProductDrawerComponent', 'selector': 'apt-product-drawer'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'},{'name': 'ProductTypeFilterComponent', 'selector': 'apt-product-type-filter'},{'name': 'PromotionComponent', 'selector': 'apt-promotion'},{'name': 'SpinnerComponent', 'selector': 'apt-spinner'},{'name': 'TableComponent', 'selector': 'apt-table'},{'name': 'TaxPopHoverComponent', 'selector': 'apt-tax-pophover'}];
     var DIRECTIVES = [{'name': 'AutoFocusDirective', 'selector': '[aptAutoFocus]'}];
     var ACTUAL_COMPONENT = {'name': 'AddToCartComponent'};
 </script>
@@ -973,6 +919,7 @@ export class AppModule {}</code></pre></div>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'AddToCartComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

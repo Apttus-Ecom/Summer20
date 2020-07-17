@@ -175,7 +175,7 @@ export class AppModule {}</code></pre></div>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(modalService: BsModalService, constraintRuleMessageService: <a href="../interfaces/ConstraintRule.html">ConstraintRuleMessageService</a>, storefrontService: <a href="../injectables/StorefrontService.html">StorefrontService</a>)</code>
+<code>constructor(modalService: BsModalService, constraintRuleMessageService: <a href="../classes/ConstraintRule.html">ConstraintRuleMessageService</a>)</code>
                     </td>
                 </tr>
 
@@ -208,19 +208,7 @@ export class AppModule {}</code></pre></div>
                                                         <td>constraintRuleMessageService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../interfaces/ConstraintRule.html" target="_self" >ConstraintRuleMessageService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>storefrontService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/StorefrontService.html" target="_self" >StorefrontService</a></code>
+                                                                        <code><a href="../classes/ConstraintRule.html" target="_self" >ConstraintRuleMessageService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -273,158 +261,192 @@ If false this component will show cart level configuration rules.</p>
 
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;cmsEnabled$ | async&quot;&gt;
-  &lt;ng-container *ngIf&#x3D;&quot;ruleGroups$ | async as ruleGroups&quot;&gt;
-    &lt;alert *ngIf&#x3D;&quot;ruleGroups.errors?.length&quot; class&#x3D;&quot;constraintRuleAlert&quot; type&#x3D;&quot;danger&quot;&gt;
-      &lt;i class&#x3D;&quot;fas fa-exclamation-circle text-danger mr-2&quot;&gt;&lt;/i&gt;
-      &lt;!-- Errors --&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors.length &#x3D;&#x3D;&#x3D; 1; else multipleErrors&quot;&gt;
-        &lt;ng-container [ngSwitch]&#x3D;&quot;ruleGroups.errors[0]?.actionType&quot;&gt;
-          &lt;!-- Inclusion --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Inclusion&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-              &lt;ng-container *ngIf&#x3D;&quot;!loading.error; else spinner&quot;&gt;
-                &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
-                &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
-              &lt;/ng-container&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &gt; 1&quot;&gt;
-              &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
-            &lt;/ng-container&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;ruleGroups$ | async as ruleGroups&quot;&gt;
+  &lt;alert *ngIf&#x3D;&quot;ruleGroups.errors?.length&quot; class&#x3D;&quot;constraintRuleAlert&quot; type&#x3D;&quot;danger&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-exclamation-circle text-danger mr-2&quot;&gt;&lt;/i&gt;
+    &lt;!-- Errors --&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors.length &#x3D;&#x3D;&#x3D; 1; else multipleErrors&quot;&gt;
+      &lt;ng-container [ngSwitch]&#x3D;&quot;ruleGroups.errors[0]?.actionType&quot;&gt;
+        &lt;!-- Inclusion --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Inclusion&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Exclusion --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Exclusion&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;!loading.error; else spinner&quot;&gt;
-              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleDeleteFromCart(ruleGroups.errors[0], &#x27;error&#x27;)&quot;&gt;{{ &quot;CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART&quot; | translate }}&lt;/a&gt;
-              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleRemoveFromBundle(ruleGroups.errors[0].actionItems[0].product, ruleGroups.errors[0].triggeringProducts[0], &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.REMOVE&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Validation --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Validation&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Exclusion --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Exclusion&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!loading.error; else spinner&quot;&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleDeleteFromCart(ruleGroups.errors[0], &#x27;error&#x27;)&quot;&gt;{{ &quot;CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleRemoveFromBundle(ruleGroups.errors[0].actionItems[0].product, ruleGroups.errors[0].triggeringProducts[0], &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.REMOVE&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Recommendation --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Recommendation&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-              &lt;ng-container *ngIf&#x3D;&quot;!loading.error; else spinner&quot;&gt;
-                &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
-                &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
-              &lt;/ng-container&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &gt; 1&quot;&gt;
-              &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Validation --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Validation&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Recommendation --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Recommendation&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!loading.error; else spinner&quot;&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, &#x27;error&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Replacement --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Replacement&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Replacement --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Replacement&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.errors[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.errors[0].messageHtml&quot;&gt;&lt;/span&gt;
           &lt;/ng-container&gt;
         &lt;/ng-container&gt;
       &lt;/ng-container&gt;
-      &lt;ng-template #multipleErrors&gt;
-        &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_ERRORS&quot; | translate: {amount: ruleGroups.errors.length} }} &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
-      &lt;/ng-template&gt;
-    &lt;/alert&gt;
-    &lt;!-- Warnings --&gt;
-    &lt;alert *ngIf&#x3D;&quot;ruleGroups.warnings?.length&quot; type&#x3D;&quot;warning&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
-      &lt;i class&#x3D;&quot;fas fa-exclamation-triangle text-warning mr-2&quot;&gt;&lt;/i&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings.length &#x3D;&#x3D;&#x3D; 1; else multipleWarnings&quot;&gt;
-        &lt;ng-container [ngSwitch]&#x3D;&quot;ruleGroups.warnings[0]?.actionType&quot;&gt;
-          &lt;!-- Inclusion --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Inclusion&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-              &lt;ng-container *ngIf&#x3D;&quot;!loading.warning; else spinner&quot;&gt;
-                &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
-                &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
-              &lt;/ng-container&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &gt; 1&quot;&gt;
-              &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
-            &lt;/ng-container&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #multipleErrors&gt;
+      &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_ERRORS&quot; | translate: {amount: ruleGroups.errors.length} }} &lt;a
+          href&#x3D;&quot;javascript:void(0)&quot;
+          (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
+    &lt;/ng-template&gt;
+  &lt;/alert&gt;
+  &lt;!-- Warnings --&gt;
+  &lt;alert *ngIf&#x3D;&quot;ruleGroups.warnings?.length&quot; type&#x3D;&quot;warning&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-exclamation-triangle text-warning mr-2&quot;&gt;&lt;/i&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings.length &#x3D;&#x3D;&#x3D; 1; else multipleWarnings&quot;&gt;
+      &lt;ng-container [ngSwitch]&#x3D;&quot;ruleGroups.warnings[0]?.actionType&quot;&gt;
+        &lt;!-- Inclusion --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Inclusion&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Exclusion --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Exclusion&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;!loading.warning; else spinner&quot;&gt;
-              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleDeleteFromCart(ruleGroups.warnings[0], &#x27;warning&#x27;)&quot;&gt;{{ &quot;CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART&quot; | translate }}&lt;/a&gt;
-              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleRemoveFromBundle(ruleGroups.warnings[0].actionItems[0].product, ruleGroups.warnings[0].triggeringProducts[0], &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.REMOVE&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Validation --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Validation&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Exclusion --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Exclusion&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!loading.warning; else spinner&quot;&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleDeleteFromCart(ruleGroups.warnings[0], &#x27;warning&#x27;)&quot;&gt;{{ &quot;CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleRemoveFromBundle(ruleGroups.warnings[0].actionItems[0].product, ruleGroups.warnings[0].triggeringProducts[0], &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.REMOVE&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Recommendation --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Recommendation&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-              &lt;ng-container *ngIf&#x3D;&quot;!loading.warning; else spinner&quot;&gt;
-                &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
-                &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
-              &lt;/ng-container&gt;
-            &lt;/ng-container&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &gt; 1&quot;&gt;
-              &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Validation --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Validation&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Recommendation --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Recommendation&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
+          &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!loading.warning; else spinner&quot;&gt;
+              &lt;a *ngIf&#x3D;&quot;!showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD_TO_CART&quot; | translate }}&lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;showProductConfig&quot; class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+                (click)&#x3D;&quot;handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, &#x27;warning&#x27;)&quot;&gt;{{ &quot;COMMON.ADD&quot; | translate }}&lt;/a&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
-          &lt;!-- Replacement --&gt;
-          &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Replacement&#x27;&quot;&gt;
-            &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
-              &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
-            &lt;/ng-container&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].actionItems.length &gt; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;ml-1&quot; href&#x3D;&quot;javascript:void(0)&quot;
+              (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;
+          &lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Replacement --&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;Replacement&#x27;&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.warnings[0].messageHtml !&#x3D;&#x3D; null&quot;&gt;
+            &lt;span [innerHtml]&#x3D;&quot;ruleGroups.warnings[0].messageHtml&quot;&gt;&lt;/span&gt;
           &lt;/ng-container&gt;
         &lt;/ng-container&gt;
       &lt;/ng-container&gt;
-      &lt;ng-template #multipleWarnings&gt;
-        &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_ERRORS&quot; | translate: {amount: ruleGroups.warnings.length} }} &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
-      &lt;/ng-template&gt;
-    &lt;/alert&gt;
-    &lt;!-- Info Messages --&gt;
-    &lt;!-- &lt;alert *ngIf&#x3D;&quot;ruleGroups.info?.length&quot; type&#x3D;&quot;info&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
-      &lt;i class&#x3D;&quot;fas fa-info-circle mr-2&quot;&gt;&lt;/i&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.info.length &#x3D;&#x3D;&#x3D; 1; else multipleMessages&quot;&gt;
-        &lt;a href&#x3D;&quot;javascript:void(0)&quot;&gt;{{ data.infoMessages[0].product.name }}&lt;/a&gt; product must include &lt;strong&gt;{{data.infoMessages[0].includedProduct.name }}&lt;/strong&gt; product. &lt;a href&#x3D;&quot;javascript:void(0)&quot;&gt;Add to Cart&lt;/a&gt;
-      &lt;/ng-container&gt;
-      &lt;ng-template #multipleMessages&gt;
-        &lt;span&gt;{{ ruleGroups.info.length }} information messages found. &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;View details&lt;/a&gt;&lt;/span&gt;
-      &lt;/ng-template&gt;
-    &lt;/alert&gt; --&gt;
-    &lt;!-- Success Messages --&gt;
-    &lt;alert *ngIf&#x3D;&quot;ruleGroups.success?.length&quot; type&#x3D;&quot;success&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
-      &lt;i class&#x3D;&quot;fas fa-info-circle mr-2&quot;&gt;&lt;/i&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.success.length &#x3D;&#x3D;&#x3D; 1; else multipleMessages&quot;&gt;
-        &lt;span *ngIf&#x3D;&quot;ruleGroups.success[0].message !&#x3D;&#x3D; null&quot; [innerHtml]&#x3D;&quot;ruleGroups.success[0].message&quot;&gt;&lt;/span&gt;
-      &lt;/ng-container&gt;
-      &lt;ng-template #multipleMessages&gt;
-        &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_INFO_MESSAGES&quot; | translate: {amount: ruleGroups.success.length} }} &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
-      &lt;/ng-template&gt;
-    &lt;/alert&gt;
-  &lt;/ng-container&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #multipleWarnings&gt;
+      &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_ERRORS&quot; | translate: {amount: ruleGroups.warnings.length} }} &lt;a
+          href&#x3D;&quot;javascript:void(0)&quot;
+          (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
+    &lt;/ng-template&gt;
+  &lt;/alert&gt;
+  &lt;!-- Info Messages --&gt;
+  &lt;!-- &lt;alert *ngIf&#x3D;&quot;ruleGroups.info?.length&quot; type&#x3D;&quot;info&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-info-circle mr-2&quot;&gt;&lt;/i&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.info.length &#x3D;&#x3D;&#x3D; 1; else multipleMessages&quot;&gt;
+      &lt;a href&#x3D;&quot;javascript:void(0)&quot;&gt;{{ data.infoMessages[0].product.name }}&lt;/a&gt; product must include &lt;strong&gt;{{data.infoMessages[0].includedProduct.name }}&lt;/strong&gt; product. &lt;a href&#x3D;&quot;javascript:void(0)&quot;&gt;Add to Cart&lt;/a&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #multipleMessages&gt;
+      &lt;span&gt;{{ ruleGroups.info.length }} information messages found. &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;handleViewDetails()&quot;&gt;View details&lt;/a&gt;&lt;/span&gt;
+    &lt;/ng-template&gt;
+  &lt;/alert&gt; --&gt;
+  &lt;!-- Success Messages --&gt;
+  &lt;alert *ngIf&#x3D;&quot;ruleGroups.success?.length&quot; type&#x3D;&quot;success&quot; [dismissible]&#x3D;&quot;true&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-info-circle mr-2&quot;&gt;&lt;/i&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;ruleGroups.success.length &#x3D;&#x3D;&#x3D; 1; else multipleMessages&quot;&gt;
+      &lt;span *ngIf&#x3D;&quot;ruleGroups.success[0].message !&#x3D;&#x3D; null&quot; [innerHtml]&#x3D;&quot;ruleGroups.success[0].message&quot;&gt;&lt;/span&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #multipleMessages&gt;
+      &lt;span&gt;{{ &quot;CONSTRAINT_ALERT.NUM_OF_INFO_MESSAGES&quot; | translate: {amount: ruleGroups.success.length} }} &lt;a
+          href&#x3D;&quot;javascript:void(0)&quot;
+          (click)&#x3D;&quot;handleViewDetails()&quot;&gt;{{ &quot;CONSTRAINT_ALERT.VIEW_DETAILS&quot; | translate }}&lt;/a&gt;&lt;/span&gt;
+    &lt;/ng-template&gt;
+  &lt;/alert&gt;
 &lt;/ng-container&gt;
 
-&lt;ng-template #spinner&gt;&lt;apt-spinner class&#x3D;&quot;ml-4&quot; [large]&#x3D;&quot;false&quot;&gt;&lt;/apt-spinner&gt;&lt;/ng-template&gt;</code></pre>
+&lt;ng-template #spinner&gt;
+  &lt;apt-spinner class&#x3D;&quot;ml-4&quot; [large]&#x3D;&quot;false&quot;&gt;&lt;/apt-spinner&gt;
+&lt;/ng-template&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -472,8 +494,8 @@ If false this component will show cart level configuration rules.</p>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="cmsEnabled$ | async">  <ng-container *ngIf="ruleGroups$ | async as ruleGroups">    <alert *ngIf="ruleGroups.errors?.length" class="constraintRuleAlert" type="danger">      <i class="fas fa-exclamation-circle text-danger mr-2"></i>      <!-- Errors -->      <ng-container *ngIf="ruleGroups.errors.length === 1; else multipleErrors">        <ng-container [ngSwitch]="ruleGroups.errors[0]?.actionType">          <!-- Inclusion -->          <ng-container *ngSwitchCase="\'Inclusion\'">            <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="ruleGroups.errors[0].actionItems.length === 1">              <ng-container *ngIf="!loading.error; else spinner">                <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>                <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD" | translate }}</a>              </ng-container>            </ng-container>            <ng-container *ngIf="ruleGroups.errors[0].actionItems.length > 1">              <a class="ml-1" href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>            </ng-container>          </ng-container>          <!-- Exclusion -->          <ng-container *ngSwitchCase="\'Exclusion\'">            <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="!loading.error; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleDeleteFromCart(ruleGroups.errors[0], \'error\')">{{ "CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleRemoveFromBundle(ruleGroups.errors[0].actionItems[0].product, ruleGroups.errors[0].triggeringProducts[0], \'error\')">{{ "COMMON.REMOVE" | translate }}</a>            </ng-container>          </ng-container>          <!-- Validation -->          <ng-container *ngSwitchCase="\'Validation\'">            <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>            </ng-container>          </ng-container>          <!-- Recommendation -->          <ng-container *ngSwitchCase="\'Recommendation\'">            <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="ruleGroups.errors[0].actionItems.length === 1">              <ng-container *ngIf="!loading.error; else spinner">                <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>                <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD" | translate }}</a>              </ng-container>            </ng-container>            <ng-container *ngIf="ruleGroups.errors[0].actionItems.length > 1">              <a class="ml-1" href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>            </ng-container>          </ng-container>          <!-- Replacement -->          <ng-container *ngSwitchCase="\'Replacement\'">            <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>            </ng-container>          </ng-container>        </ng-container>      </ng-container>      <ng-template #multipleErrors>        <span>{{ "CONSTRAINT_ALERT.NUM_OF_ERRORS" | translate: {amount: ruleGroups.errors.length} }} <a href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>      </ng-template>    </alert>    <!-- Warnings -->    <alert *ngIf="ruleGroups.warnings?.length" type="warning" [dismissible]="true">      <i class="fas fa-exclamation-triangle text-warning mr-2"></i>      <ng-container *ngIf="ruleGroups.warnings.length === 1; else multipleWarnings">        <ng-container [ngSwitch]="ruleGroups.warnings[0]?.actionType">          <!-- Inclusion -->          <ng-container *ngSwitchCase="\'Inclusion\'">            <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length === 1">              <ng-container *ngIf="!loading.warning; else spinner">                <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>                <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD" | translate }}</a>              </ng-container>            </ng-container>            <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length > 1">              <a class="ml-1" href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>            </ng-container>          </ng-container>          <!-- Exclusion -->          <ng-container *ngSwitchCase="\'Exclusion\'">            <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="!loading.warning; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleDeleteFromCart(ruleGroups.warnings[0], \'warning\')">{{ "CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleRemoveFromBundle(ruleGroups.warnings[0].actionItems[0].product, ruleGroups.warnings[0].triggeringProducts[0], \'warning\')">{{ "COMMON.REMOVE" | translate }}</a>            </ng-container>          </ng-container>          <!-- Validation -->          <ng-container *ngSwitchCase="\'Validation\'">            <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>            </ng-container>          </ng-container>          <!-- Recommendation -->          <ng-container *ngSwitchCase="\'Recommendation\'">            <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>            </ng-container>            <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length === 1">              <ng-container *ngIf="!loading.warning; else spinner">                <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>                <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)" (click)="handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD" | translate }}</a>              </ng-container>            </ng-container>            <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length > 1">              <a class="ml-1" href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>            </ng-container>          </ng-container>          <!-- Replacement -->          <ng-container *ngSwitchCase="\'Replacement\'">            <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">              <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>            </ng-container>          </ng-container>        </ng-container>      </ng-container>      <ng-template #multipleWarnings>        <span>{{ "CONSTRAINT_ALERT.NUM_OF_ERRORS" | translate: {amount: ruleGroups.warnings.length} }} <a href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>      </ng-template>    </alert>    <!-- Info Messages -->    <!-- <alert *ngIf="ruleGroups.info?.length" type="info" [dismissible]="true">      <i class="fas fa-info-circle mr-2"></i>      <ng-container *ngIf="ruleGroups.info.length === 1; else multipleMessages">        <a href="javascript:void(0)">{{ data.infoMessages[0].product.name }}</a> product must include <strong>{{data.infoMessages[0].includedProduct.name }}</strong> product. <a href="javascript:void(0)">Add to Cart</a>      </ng-container>      <ng-template #multipleMessages>        <span>{{ ruleGroups.info.length }} information messages found. <a href="javascript:void(0)" (click)="handleViewDetails()">View details</a></span>      </ng-template>    </alert> -->    <!-- Success Messages -->    <alert *ngIf="ruleGroups.success?.length" type="success" [dismissible]="true">      <i class="fas fa-info-circle mr-2"></i>      <ng-container *ngIf="ruleGroups.success.length === 1; else multipleMessages">        <span *ngIf="ruleGroups.success[0].message !== null" [innerHtml]="ruleGroups.success[0].message"></span>      </ng-container>      <ng-template #multipleMessages>        <span>{{ "CONSTRAINT_ALERT.NUM_OF_INFO_MESSAGES" | translate: {amount: ruleGroups.success.length} }} <a href="javascript:void(0)" (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>      </ng-template>    </alert>  </ng-container></ng-container><ng-template #spinner><apt-spinner class="ml-4" [large]="false"></apt-spinner></ng-template></div>'
-    var COMPONENTS = [{'name': 'AccordionGroupComponent', 'selector': 'apt-cms-accordion-group'},{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AlertComponent', 'selector': 'apt-alert'},{'name': 'AssetDropdownButtonComponent', 'selector': 'apt-asset-dropdown-button'},{'name': 'AssetListComponent', 'selector': 'apt-asset-list'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CategoryFilterComponent', 'selector': 'apt-category-filter'},{'name': 'ChartComponent', 'selector': 'apt-chart'},{'name': 'CmsConfigurationSummaryComponent', 'selector': 'apt-cms-configuration-summary'},{'name': 'CmsProductConfigurationComponent', 'selector': 'apt-cms-product-configuration'},{'name': 'ConfigurationSummaryWrapperComponent', 'selector': 'apt-configuration-summary-wrapper'},{'name': 'ConstraintRuleAlertComponent', 'selector': 'apt-constraint-rule-alert'},{'name': 'ConstraintRulePopoverComponent', 'selector': 'apt-cms-constraint-rule-popover'},{'name': 'ConstraintRuleSidebarComponent', 'selector': 'apt-constraint-rule-sidebar'},{'name': 'CRConstraintAlertComponent', 'selector': 'apt-cr-constraint-alert'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'CRSideMenuComponent', 'selector': 'apt-cr-side-menu'},{'name': 'DataFilterComponent', 'selector': 'apt-data-filter'},{'name': 'DotsComponent', 'selector': 'apt-dots'},{'name': 'GenerateDocumentComponent', 'selector': 'apt-generate-document'},{'name': 'InputDateComponent', 'selector': 'apt-date-range-input'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputSelectComponent', 'selector': 'apt-input-select'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'LineItemTableRowComponent', 'selector': 'apt-line-item-table-row'},{'name': 'LoginFormComponent', 'selector': 'apt-login-form'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'OutputFieldComponent', 'selector': 'apt-output-field'},{'name': 'PaymentComponent', 'selector': 'apt-payment'},{'name': 'PaymentIFrameComponent', 'selector': 'apt-payment-iframe'},{'name': 'PresentDocumentComponent', 'selector': 'apt-present-document'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'PriceSummaryComponent', 'selector': 'apt-price-summary'},{'name': 'ProductAttributeComponent', 'selector': 'apt-cms-product-attribute'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductCompareComponent', 'selector': 'apt-product-compare'},{'name': 'ProductConfigurationComponent', 'selector': 'apt-product-configuration'},{'name': 'ProductConfigurationSummaryComponent', 'selector': 'apt-product-configuration-summary'},{'name': 'ProductDrawerComponent', 'selector': 'apt-product-drawer'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'},{'name': 'ProductOptionComponent', 'selector': 'apt-cms-product-option'},{'name': 'ProductSearchComponent', 'selector': 'apt-product-search'},{'name': 'ProductTypeFilterComponent', 'selector': 'apt-product-type-filter'},{'name': 'PromotionComponent', 'selector': 'apt-promotion'},{'name': 'SpinnerComponent', 'selector': 'apt-spinner'},{'name': 'TableComponent', 'selector': 'apt-table'},{'name': 'TaxPopHoverComponent', 'selector': 'apt-tax-pophover'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="ruleGroups$ | async as ruleGroups">  <alert *ngIf="ruleGroups.errors?.length" class="constraintRuleAlert" type="danger">    <i class="fas fa-exclamation-circle text-danger mr-2"></i>    <!-- Errors -->    <ng-container *ngIf="ruleGroups.errors.length === 1; else multipleErrors">      <ng-container [ngSwitch]="ruleGroups.errors[0]?.actionType">        <!-- Inclusion -->        <ng-container *ngSwitchCase="\'Inclusion\'">          <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length === 1">            <ng-container *ngIf="!loading.error; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Exclusion -->        <ng-container *ngSwitchCase="\'Exclusion\'">          <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length === 1">            <ng-container *ngIf="!loading.error; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleDeleteFromCart(ruleGroups.errors[0], \'error\')">{{ "CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleRemoveFromBundle(ruleGroups.errors[0].actionItems[0].product, ruleGroups.errors[0].triggeringProducts[0], \'error\')">{{ "COMMON.REMOVE" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Validation -->        <ng-container *ngSwitchCase="\'Validation\'">          <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>          </ng-container>        </ng-container>        <!-- Recommendation -->        <ng-container *ngSwitchCase="\'Recommendation\'">          <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length === 1">            <ng-container *ngIf="!loading.error; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToCart(ruleGroups.errors[0], ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToConfiguration(ruleGroups.errors[0].actionItems[0].product, \'error\')">{{ "COMMON.ADD" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.errors[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Replacement -->        <ng-container *ngSwitchCase="\'Replacement\'">          <ng-container *ngIf="ruleGroups.errors[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.errors[0].messageHtml"></span>          </ng-container>        </ng-container>      </ng-container>    </ng-container>    <ng-template #multipleErrors>      <span>{{ "CONSTRAINT_ALERT.NUM_OF_ERRORS" | translate: {amount: ruleGroups.errors.length} }} <a          href="javascript:void(0)"          (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>    </ng-template>  </alert>  <!-- Warnings -->  <alert *ngIf="ruleGroups.warnings?.length" type="warning" [dismissible]="true">    <i class="fas fa-exclamation-triangle text-warning mr-2"></i>    <ng-container *ngIf="ruleGroups.warnings.length === 1; else multipleWarnings">      <ng-container [ngSwitch]="ruleGroups.warnings[0]?.actionType">        <!-- Inclusion -->        <ng-container *ngSwitchCase="\'Inclusion\'">          <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length === 1">            <ng-container *ngIf="!loading.warning; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Exclusion -->        <ng-container *ngSwitchCase="\'Exclusion\'">          <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length === 1">            <ng-container *ngIf="!loading.warning; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleDeleteFromCart(ruleGroups.warnings[0], \'warning\')">{{ "CONSTRAINT_SIDE_MENU.REMOVE_FROM_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleRemoveFromBundle(ruleGroups.warnings[0].actionItems[0].product, ruleGroups.warnings[0].triggeringProducts[0], \'warning\')">{{ "COMMON.REMOVE" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Validation -->        <ng-container *ngSwitchCase="\'Validation\'">          <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>          </ng-container>        </ng-container>        <!-- Recommendation -->        <ng-container *ngSwitchCase="\'Recommendation\'">          <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length === 1">            <ng-container *ngIf="!loading.warning; else spinner">              <a *ngIf="!showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToCart(ruleGroups.warnings[0], ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD_TO_CART" | translate }}</a>              <a *ngIf="showProductConfig" class="ml-1" href="javascript:void(0)"                (click)="handleAddToConfiguration(ruleGroups.warnings[0].actionItems[0].product, \'warning\')">{{ "COMMON.ADD" | translate }}</a>            </ng-container>          </ng-container>          <ng-container *ngIf="ruleGroups.warnings[0].actionItems.length > 1">            <a class="ml-1" href="javascript:void(0)"              (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a>          </ng-container>        </ng-container>        <!-- Replacement -->        <ng-container *ngSwitchCase="\'Replacement\'">          <ng-container *ngIf="ruleGroups.warnings[0].messageHtml !== null">            <span [innerHtml]="ruleGroups.warnings[0].messageHtml"></span>          </ng-container>        </ng-container>      </ng-container>    </ng-container>    <ng-template #multipleWarnings>      <span>{{ "CONSTRAINT_ALERT.NUM_OF_ERRORS" | translate: {amount: ruleGroups.warnings.length} }} <a          href="javascript:void(0)"          (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>    </ng-template>  </alert>  <!-- Info Messages -->  <!-- <alert *ngIf="ruleGroups.info?.length" type="info" [dismissible]="true">    <i class="fas fa-info-circle mr-2"></i>    <ng-container *ngIf="ruleGroups.info.length === 1; else multipleMessages">      <a href="javascript:void(0)">{{ data.infoMessages[0].product.name }}</a> product must include <strong>{{data.infoMessages[0].includedProduct.name }}</strong> product. <a href="javascript:void(0)">Add to Cart</a>    </ng-container>    <ng-template #multipleMessages>      <span>{{ ruleGroups.info.length }} information messages found. <a href="javascript:void(0)" (click)="handleViewDetails()">View details</a></span>    </ng-template>  </alert> -->  <!-- Success Messages -->  <alert *ngIf="ruleGroups.success?.length" type="success" [dismissible]="true">    <i class="fas fa-info-circle mr-2"></i>    <ng-container *ngIf="ruleGroups.success.length === 1; else multipleMessages">      <span *ngIf="ruleGroups.success[0].message !== null" [innerHtml]="ruleGroups.success[0].message"></span>    </ng-container>    <ng-template #multipleMessages>      <span>{{ "CONSTRAINT_ALERT.NUM_OF_INFO_MESSAGES" | translate: {amount: ruleGroups.success.length} }} <a          href="javascript:void(0)"          (click)="handleViewDetails()">{{ "CONSTRAINT_ALERT.VIEW_DETAILS" | translate }}</a></span>    </ng-template>  </alert></ng-container><ng-template #spinner>  <apt-spinner class="ml-4" [large]="false"></apt-spinner></ng-template></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AlertComponent', 'selector': 'apt-alert'},{'name': 'AssetDropdownButtonComponent', 'selector': 'apt-asset-dropdown-button'},{'name': 'AssetListComponent', 'selector': 'apt-asset-list'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CategoryFilterComponent', 'selector': 'apt-category-filter'},{'name': 'ChartComponent', 'selector': 'apt-chart'},{'name': 'ConstraintRuleAlertComponent', 'selector': 'apt-constraint-rule-alert'},{'name': 'ConstraintRuleSidebarComponent', 'selector': 'apt-constraint-rule-sidebar'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'DataFilterComponent', 'selector': 'apt-data-filter'},{'name': 'DotsComponent', 'selector': 'apt-dots'},{'name': 'GenerateDocumentComponent', 'selector': 'apt-generate-document'},{'name': 'InputDateComponent', 'selector': 'apt-date-range-input'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputSelectComponent', 'selector': 'apt-input-select'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'LineItemTableRowComponent', 'selector': 'apt-line-item-table-row'},{'name': 'LoginFormComponent', 'selector': 'apt-login-form'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'OutputFieldComponent', 'selector': 'apt-output-field'},{'name': 'PaymentComponent', 'selector': 'apt-payment'},{'name': 'PaymentIFrameComponent', 'selector': 'apt-payment-iframe'},{'name': 'PresentDocumentComponent', 'selector': 'apt-present-document'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'PriceSummaryComponent', 'selector': 'apt-price-summary'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductCompareComponent', 'selector': 'apt-product-compare'},{'name': 'ProductConfigurationComponent', 'selector': 'apt-product-configuration'},{'name': 'ProductConfigurationSummaryComponent', 'selector': 'apt-product-configuration-summary'},{'name': 'ProductDrawerComponent', 'selector': 'apt-product-drawer'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'},{'name': 'ProductTypeFilterComponent', 'selector': 'apt-product-type-filter'},{'name': 'PromotionComponent', 'selector': 'apt-promotion'},{'name': 'SpinnerComponent', 'selector': 'apt-spinner'},{'name': 'TableComponent', 'selector': 'apt-table'},{'name': 'TaxPopHoverComponent', 'selector': 'apt-tax-pophover'}];
     var DIRECTIVES = [{'name': 'AutoFocusDirective', 'selector': '[aptAutoFocus]'}];
     var ACTUAL_COMPONENT = {'name': 'ConstraintRuleAlertComponent'};
 </script>
@@ -511,6 +533,7 @@ If false this component will show cart level configuration rules.</p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ConstraintRuleAlertComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

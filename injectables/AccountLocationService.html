@@ -101,15 +101,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
                                 <a href="#getAccountLocations">getAccountLocations</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#saveLocationToAccount">saveLocationToAccount</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#setLocationAsDefault">setLocationAsDefault</a>
                             </li>
                         </ul>
@@ -134,10 +134,91 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <b>
+                            delete
+                        </b>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete(recordList: Array<AObject>, updateCache: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>recordList</td>
+                                    <td>
+                                            <code>Array&lt;AObject&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>updateCache</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>true</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;Array&lt;AObject&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getAccountLocations"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Public</span>
                             getAccountLocations
                         </b>
                         <a href="#getAccountLocations"><span class="icon ion-ios-link"></span></a>
@@ -146,8 +227,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAccountLocations()</code>
+<code>getAccountLocations()</code>
                 </td>
             </tr>
 
@@ -195,7 +275,6 @@ export class MyComponent implements OnInit{
                     <a name="saveLocationToAccount"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Public</span>
                             saveLocationToAccount
                         </b>
                         <a href="#saveLocationToAccount"><span class="icon ion-ios-link"></span></a>
@@ -204,8 +283,7 @@ export class MyComponent implements OnInit{
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>saveLocationToAccount(location: <a href="../classes/AccountLocation.html">AccountLocation</a>)</code>
+<code>saveLocationToAccount(location: <a href="../classes/AccountLocation.html">AccountLocation</a>)</code>
                 </td>
             </tr>
 
@@ -284,7 +362,6 @@ export class MyComponent implements OnInit{
                     <a name="setLocationAsDefault"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Public</span>
                             setLocationAsDefault
                         </b>
                         <a href="#setLocationAsDefault"><span class="icon ion-ios-link"></span></a>
@@ -293,8 +370,7 @@ export class MyComponent implements OnInit{
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setLocationAsDefault(location: <a href="../classes/AccountLocation.html">AccountLocation</a>)</code>
+<code>setLocationAsDefault(location: <a href="../classes/AccountLocation.html">AccountLocation</a>)</code>
                 </td>
             </tr>
 
@@ -430,6 +506,7 @@ export class MyComponent implements OnInit{
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'AccountLocationService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

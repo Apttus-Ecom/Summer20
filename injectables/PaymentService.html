@@ -109,11 +109,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
+                                <a href="#getActiveCardsForAccount">getActiveCardsForAccount</a>
+                            </li>
+                            <li>
                                 <a href="#saleCaptureMethod">saleCaptureMethod</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#silentOrderPayment">silentOrderPayment</a>
                             </li>
                         </ul>
@@ -138,10 +139,81 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getActiveCardsForAccount"></a>
+                    <span class="name">
+                        <b>
+                            getActiveCardsForAccount
+                        </b>
+                        <a href="#getActiveCardsForAccount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getActiveCardsForAccount(accountId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This method is responsible for fetching active cards for payment based on the account id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>accountId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the account Id value.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/PaymentMethod.html" target="_self" >Observable&lt;Array&lt;PaymentMethod&gt;&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>List of details of pyment Method for the associated account Id.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="saleCaptureMethod"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Public</span>
                             saleCaptureMethod
                         </b>
                         <a href="#saleCaptureMethod"><span class="icon ion-ios-link"></span></a>
@@ -150,8 +222,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>saleCaptureMethod(transactionDetails: <a href="../classes/PaymentTransaction.html">PaymentTransaction</a>, gatewayTransaction: <a href="../classes/GatewayTransaction.html">GatewayTransaction</a>, gatewayCommunication: <a href="../classes/GatewayCommunication.html">GatewayCommunication</a>)</code>
+<code>saleCaptureMethod(transactionDetails: <a href="../classes/PaymentTransaction.html">PaymentTransaction</a>, gatewayTransaction: <a href="../classes/GatewayTransaction.html">GatewayTransaction</a>, gatewayCommunication: <a href="../classes/GatewayCommunication.html">GatewayCommunication</a>)</code>
                 </td>
             </tr>
 
@@ -256,7 +327,6 @@
                     <a name="silentOrderPayment"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Public</span>
                             silentOrderPayment
                         </b>
                         <a href="#silentOrderPayment"><span class="icon ion-ios-link"></span></a>
@@ -265,8 +335,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>silentOrderPayment(transactionDetails: <a href="../classes/PaymentTransaction.html">PaymentTransaction</a>, gatewayTransaction: <a href="../classes/GatewayTransaction.html">GatewayTransaction</a>, gatewayCommunication: <a href="../classes/GatewayCommunication.html">GatewayCommunication</a>)</code>
+<code>silentOrderPayment(transactionDetails: <a href="../classes/PaymentTransaction.html">PaymentTransaction</a>, gatewayTransaction: <a href="../classes/GatewayTransaction.html">GatewayTransaction</a>, gatewayCommunication: <a href="../classes/GatewayCommunication.html">GatewayCommunication</a>)</code>
                 </td>
             </tr>
 
@@ -472,6 +541,7 @@
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'PaymentService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
