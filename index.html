@@ -32,24 +32,47 @@
                    <div class="content-data">
 
 <h1 id="apttus-digital-commerce-sdk">Apttus Digital Commerce SDK</h1>
-<p>The purpose of this guide is to provide technical instructions on the installation and setup of an Apttus Digital Commerce storefront. The intended audience are developers who will be creating and maintaining new storefronts on a Salesforce Apttus installation. If you haven&#39;t already, please contact Apttus to get the Digital Commerce package installed in your org prior to installation.</p>
-<h2 id="create-your-first-storefront">Create your first Storefront</h2>
-<p>The Apttus Digital Commerce SDK is intended to work with the unified data model of the underlying Apttus Quote-to-cash platform. This means, there are no additional data setup steps in order to create and maintain your catalog within Apttus outside of what you may already do if you use Apttus CPQ. That said, this guide assumes you have already created data for the following within Apttus:</p>
-<ul>
-<li>Category</li>
-<li>Product</li>
+<h2 id="pre-requisite">Pre-requisite</h2>
+<p>Apttus Digital Commerce packages must be already installed on your Salesforce org. For package and
+installation assistance, contact Apttus Support.</p>
+<h3 id="create-your-first-storefront">Create your first Storefront</h3>
+<p>The Apttus Digital Commerce SDK works with the unified data model of the underlying Apttus Quote-toCash platform. This means that there are no additional data setup procedures for creating and maintaining
+your storefront catalog.</p>
+<h2 id="to-create-your-first-storefront">To create your first storefront</h2>
+<ol>
+<li>Using Apttus CPQ, you must already have the existing data:<ul>
+<li>Categories</li>
+<li>Products</li>
 <li>Price List</li>
 </ul>
-<h3 id="community-setup">Community Setup</h3>
-<p>The Apttus Digital Commerce platform leverages a Salesforce Community to provide authentication and hosting features for guest users. After the Digital Commerce package is deployed, the next step is to create a Salesforce Community. At minimum, you just need the community URL. However, if you intend to support guest users, you will need to enable that within the community settings. After deployment, the angular library will provide a Visualforce page that you can set as the default page for all page settings within the community (i.e home, login, forgot password, change password etc). Being that its a single page application, it is designed to handle all incoming requests.</p>
-<h3 id="storefront-object">Storefront Object</h3>
-<p>Apart from the underlying catalog, the Digital Commerce package comes with a store object and tab to map a storefront to a catalog. If you are using an Apttus MDO org, there may already be a &#39;store&#39; object installed. This object is deprecated in favor of the &#39;Storefront&#39; object that comes with the Digital Commerce package.</p>
-<p>After your catalog has been setup within Apttus, the next step is to create a &#39;Storefront&#39; record. The storefront object is very basic and contains only a couple fields to map a storefront to a price list and logo for the guest user. The price list should look up to the price list you want the guest user to access and the logo should be an id or a url of the logo attachment for the store. The storefront record also has a &#39;banner&#39; related list that can be used to setup banners for the jumbotron component in the reference template.  Remember the name of the storefront you created. This will be used in a later step to associate with a storefront codebase.</p>
-<h3 id="apttus-digital-commerce-permission-set">Apttus Digital Commerce Permission Set</h3>
-<p>The Digital Commerce package comes with a basic permission set for providing the necessary access to users. The permission set is named &#39;Apttus Ecommerce&#39; and should be assigned to users access the Digital Commerce storefront. If you would like to make any changes to the permissions, you may clone the permission set and make any changes necessary. </p>
-<h2 id="angular-library-installation">Angular Library Installation</h2>
-<p>In order to install the apttus Digital Commerce libraries, you must first be granted access. Please reach out to Apttus support for obtaining access to this libraries.</p>
-<p>To install all required libraries, run:</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>Set up a community - Apttus Digital Commerce leverages a Salesforce Community to provide
+authentication and hosting features for guest users. After the Digital Commerce package is installed
+in your org, you must create a Salesforce Community. For details on setting up a community, refer to <strong>Setting Up Communities</strong> in the Digital Commerce on Salesforce Implementation and Deployment Guide.</br>
+At a minimum, you just need the community URL. However, if you intend to support guest users, you
+enable it within the community settings. After deployment, the angular library provides a Visualforce
+page that you can set as the default page for all page settings within the community. For example
+Home, Login, Forgot Password, Change Password, and so on. Being a single page application, it is
+designed to handle all incoming requests.</p>
+</li>
+<li><p>Create a storefront record - Digital Commerce package consists of a Storefront object, an
+underlying Catalog, and a Tab to map the storefront to the Catalog. You must create a storefront
+record. For details on creating a storefront record, refer to <strong>Adding a Storefront Record</strong> in the Digital Commerce on Salesforce Implementation and Deployment Guide.</br>
+The storefront record consists of a Storefront Banner related list. For details on adding a
+promotional banner to your storefront, refer to <strong>Adding Storefront Promotional Banners</strong> in the Digital Commerce on Salesforce Implementation and Deployment Guide.</p>
+<div class="alert alert-warning"> If you are using an Apttus MDO org, there may already be a Store object installed. This Store object is deprecated in favor of the Storefront object that comes with the Digital Commerce package.
+</div>
+</li>
+<li><p>Assigning Apttus Digital Commerce Permission Set - The Digital Commerce package comes with
+basic permission set for providing the necessary access to users. For more details on assigning
+permission sets, see Apttus E-Commerce Permission Set in the Digital Commerce on Salesforce
+Implementation and Deployment Guide.</p>
+</li>
+</ol>
+<h2 id="installing-the-angular-library">Installing the Angular Library</h2>
+<p>Ensure you have access to the Apttus Digital Commerce libraries. Contact Apttus Support for obtaining access to these libraries. After you have access, to install all the required libraries, run:</p>
 <div><pre class="line-numbers"><code class="language-bash">npm install --save &#64;apttus/core &#64;apttus/ecommerce &#64;apttus/elements</code></pre></div><p>AppModule.ts</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
 import { NgModule } from &#39;&#64;angular/core&#39;;
@@ -113,12 +136,10 @@ import { OrderDetailsGuard } from &#39;&#64;apttus/ecommerce&#39;;
   providers: [RouteGuard, AuthGuard, AboGuard, ConfigureGuard, ConstraintRuleGuard, OrderDetailsGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }</code></pre></div><p>Once your library is imported, you can use its components, directives and pipes in your Angular application:</p>
+export class AppModule { }</code></pre></div><p>After the library is imported, you can use its components, directives, and pipes in your Angular application:</p>
 <h2 id="defining-a-model">Defining a model</h2>
-<p>Proper state management is crucial to a successful Angular PWA. To that end, accessing data within Salesforce requires you to define your model
-within a Typescript class. Behind the scenes, @apttus/core is managing how your components access and interact with that data to avoid uncessary
-operations and maintain synchronicity. </p>
-<p>Here&#39;s an example that defines the account and contact relationship for a component.</p>
+<p>Proper state management is crucial to a successful Angular PWA (Progressive Web Application). For this, accessing data within Salesforce requires you to define your model within a Typescript class. Behind the scenes, @apttus/core is managing how your components access and interact with that data to avoid unnecessary operations and maintain synchronicity.</p>
+<p>See the example illustrated below that defines the account and contact relationship for a component.</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { AObject, ATable, AField } from &#39;&#64;apttus/core&#39;;
 
 // We use the decorator ATable to tell &#64;apttus/core this class maps to the &#39;Account&#39; object.
@@ -157,8 +178,7 @@ export class Account extends AObject {
   })
   PriceList: PriceList = new PriceList();
 }</code></pre></div><h2 id="defining-a-service">Defining a Service</h2>
-<p>After defining your model, you can access the data by creating a service for the models. The AObjectService class contains many of the standard DML and query operations to access the data, however you may add
-any convenience methods you want to your service. The core service methods are usually very simple.</p>
+<p>After defining your model, you can access the data by creating a service for the models. The AObjectService class contains many of the standard DML and query operations to access the data.However, you can add any convenient methods you want to your service. The core service methods are usually very simple.</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { AObjectService } from &#39;&#64;apttus/core&#39;;
 import { Injectable } from &#39;&#64;angular/core&#39;;
 import { Account } from &#39;./account.model.ts&#39;  // This is a reference to the account model created in the previous section
