@@ -50,10 +50,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="additional-pages"' : 'id="xs-additional-pages"' }>
                                     <li class="link ">
-                                        <a href="additional-documentation/upgrade-ecommerce-template-from-winter-v1903-to-spring-v2001.html" data-type="entity-link" data-context-id="additional">Upgrade ecommerce template from Winter v1903 to Spring v2001</a>
+                                        <a href="additional-documentation/upgrade-ecommerce-template-from-winter-v1903-to-summer-v2002.html" data-type="entity-link" data-context-id="additional">Upgrade ecommerce template from Winter v1903 to Summer v2002</a>
                                     </li>
                                     <li class="link ">
-                                        <a href="additional-documentation/upgrade-partner-commerce-template-from-winter-v1903-to-spring-v2001.html" data-type="entity-link" data-context-id="additional">Upgrade partner commerce template from Winter v1903 to Spring v2001</a>
+                                        <a href="additional-documentation/upgrade-partner-commerce-template-from-winter-v1903-to-summer-v2002.html" data-type="entity-link" data-context-id="additional">Upgrade partner commerce template from Winter v1903 to Summer v2002</a>
                                     </li>
                                     <li class="link ">
                                         <a href="additional-documentation/upgrade-ecommerce-template-from-summer-v1902-to-spring-v2001.html" data-type="entity-link" data-context-id="additional">Upgrade ecommerce template from Summer v1902 to Spring v2001</a>
